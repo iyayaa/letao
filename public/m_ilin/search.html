@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+    <title>乐淘ilin</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0"/>
-    <!--ios是否运行创建快捷启动方式-->
+    <!--ios是否允许创建快捷启动方式-->
     <meta content="yes" name="apple-mobile-web-app-capable">
     <!--ios顶部通知栏的样式 黑色-->
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
@@ -16,36 +16,37 @@
     <link rel="stylesheet" href="assets/fontAwesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/search.css">
-    <title>传淘-搜索中心</title>
 </head>
 <body>
-<!--首页内容-->
-<div class="ct_container">
-    <header class="ct_header">
-        <a href="javascript:history.back();" class="left"><span class="fa fa-arrow-left"></span></a>
-        <h3>搜索中心</h3>
-    </header>
-    <div class="ct_content">
-        <div class="ct_wrapper">
-            <!--搜索输入区域-->
-            <div class="ct_search">
-                <!--在移动断调用虚拟键盘的时候 enter键变成 搜索按钮 -->
-                <form action="#">
-                    <input type="search" placeholder="搜索你喜欢的商品">
-                </form>
-                <a href="javascript:;">搜索</a>
+<!--分类内容-->
+    <div class="ct_container">
+        <header class="ct_header">
+            <a href="javascript:history.back();" class="left"><span class="fa fa-arrow-left"></span></a>
+            <h3>搜索中心</h3>
+            <!-- <a href="search.html" class="right"><span class="fa fa-search"></span></a> -->
+        </header>
+        <div class="ct_content">
+            <div class="ct_wrapper">
+                <!--搜索输入区域-->
+                <div class="ct_search">
+                    <!--在移动断调用虚拟键盘的时候 enter键变成 搜索按钮 -->
+                    <form action="#">
+                        <input type="search" placeholder="搜索你喜欢的商品">
+                    </form>
+                    <a href="javascript:;">搜索</a>
+                </div>
+                <!--搜索的历史区域-->
+                <div class="ct_history"></div>
             </div>
-            <!--搜索的历史区域-->
-            <div class="ct_history"></div>
         </div>
+        <footer class="ct_footer">
+            <a class="tab_home fa fa-home" href="index.html"><span>首页</span></a>
+            <a class="tab_cate fa fa-bars" href="category.html"><span>分类</span></a>
+            <a class="tab_cart fa fa-shopping-cart" href="cart.html"><span>购物车</span></a>
+            <a class="tab_user fa fa-user" href="user/index.html"><span>会员中心</span></a>
+        </footer>
     </div>
-    <footer class="ct_footer">
-        <a class="tab_home fa fa-home" href="index.html"><span>首页</span></a>
-        <a class="tab_cate fa fa-bars" href="category.html"><span>分类</span></a>
-        <a class="tab_cart fa fa-shopping-cart" href="cart.html"><span>购物车</span></a>
-        <a class="tab_user fa fa-user" href="user/index.html"><span>会员中心</span></a>
-    </footer>
-</div>
+
 <script src="assets/mui/js/mui.min.js"></script>
 <script src="assets/zepto/zepto.min.js"></script>
 <script src="assets/artTemplate/template-native.js"></script>
