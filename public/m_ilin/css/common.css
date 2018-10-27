@@ -77,3 +77,9 @@ body{background: #fff;}
 .ct_container .ct_footer a.now{
     color: #222;
 }
+
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
