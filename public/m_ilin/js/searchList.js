@@ -3,7 +3,7 @@ $(function () {
 		indicators:false
 	});
 	/*1.页面初始化的时候：关键字在输入框内显示*/
-	var urlKey = getParamsByUrl().key;
+	var urlKey = CT.getParamsByUrl().key;
 	$('.ct_search input').val(urlKey||'');
 
 
@@ -112,18 +112,18 @@ function checkKey(){
 }
 
 
-function getParamsByUrl(){
-	var search = location.search.substring(1);
-	var params ={};
-	if(search){
-		var arr = search.split('&');
-		arr.forEach(function(item){
-			itemArr = item.split('=');
-			params[itemArr[0]] = itemArr[1];
-		});
-	}
-	return params;
-}
+// function getParamsByUrl(){
+// 	var search = location.search.substring(1);
+// 	var params ={};
+// 	if(search){
+// 		var arr = search.split('&');
+// 		arr.forEach(function(item){
+// 			itemArr = item.split('=');
+// 			params[itemArr[0]] = itemArr[1];
+// 		});
+// 	}
+// 	return params;
+// }
 var page;
 var loadFlag = false;
 var noData = false;
