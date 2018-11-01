@@ -3,7 +3,8 @@ $(function(){
     mui('.mui-scroll-wrapper').scroll({
         indicators: false
     });
-
+    // var num;
+    var max,num;
     var id=CT.getParamsByUrl().id;
     getProductData(id,function(data){
     	$('.mui-scroll').html(template('detail',data));
@@ -16,7 +17,7 @@ $(function(){
 			$(this).addClass('now').siblings().removeClass('now');
 		});
 		// 商品数量
-		var max,num;
+		
 		$('.p_number span').on('tap',function(){
 			var $input =$(this).siblings('input').eq(0);
 			max = parseInt($input.attr('data-max'));
@@ -42,11 +43,11 @@ $(function(){
 		});
 		// 加入购物车
 		$('.btn_addCart').on('tap',function(){
+			// alert($('.p_number input').val());
 			if($('.p_size span.now').length == 0){
 				mui.toast('请选择商品尺码');
 				return false;
 			}else{
-
 				CT.loginAjax({
 					"url":'/cart/addCart',
 					"type":'post',
@@ -57,7 +58,6 @@ $(function(){
 					},
 					"dataType":'json',
 					"success":function(data){
-						// console.log(data);
 						if(data.success == true){
 	                        mui.confirm('添加成功，去购物车看看？', '温馨提示', ['是', '否'], function(e) {
 	                            if (e.index == 0) {
