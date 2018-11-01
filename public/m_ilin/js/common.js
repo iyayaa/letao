@@ -5,12 +5,12 @@ CT.getParamsByUrl = function(){
 	if(search){
 		var arr = search.split('&');
 		arr.forEach(function(item){
-			itemArr = item.split('=');
+			var itemArr = item.split('=');
 			params[itemArr[0]] = itemArr[1];
 		});
 	}
 	return params;
-}
+};
 
 /*需要登录的ajax请求*/
 CT.loginAjax = function(params){
@@ -33,4 +33,20 @@ CT.loginAjax = function(params){
         }
 	});
 
-}
+};
+
+//序列化
+CT.serialize2object = function(serializeStr){
+	// username=tt&password=f
+	var obj = {};
+	if(serializeStr){
+		var arr = serializeStr.split('&');;
+		arr.forEach(function(item){
+			var itemArr= item.split('=');
+			obj[itemArr[0]] = itemArr[1];
+		});
+	}
+	
+	return obj;
+
+};
