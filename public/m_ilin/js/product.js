@@ -43,7 +43,7 @@ $(function(){
 		});
 		// 加入购物车
 		$('.btn_addCart').on('tap',function(){
-			// alert($('.p_number input').val());
+			num = $('.p_number input').val();
 			if($('.p_size span.now').length == 0){
 				mui.toast('请选择商品尺码');
 				return false;
@@ -61,7 +61,7 @@ $(function(){
 						if(data.success == true){
 	                        mui.confirm('添加成功，去购物车看看？', '温馨提示', ['是', '否'], function(e) {
 	                            if (e.index == 0) {
-	                                location.href = CT.cartUrl;
+	                                location.href = '/m_ilin/user/cart.html';
 	                            } else {
 	                                //TODO
 	                            }

@@ -27,7 +27,7 @@ CT.loginAjax = function(params){
 				params.success && params.success(data);
 			}
 
-		},
+		}, 
 		error:function () {
             mui.toast('服务器繁忙');
         }
