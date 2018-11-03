@@ -80,16 +80,22 @@ $(function () {
 		$that = $(this);
 		var id= $that.parent().attr('data-id');
 
-		mui.confirm('真的要删除吗？', '删除商品', btnArray, function(){
+		mui.confirm('真的要删除吗？', '删除商品', btnArray, function(e){
 
 			if (e.index == 0) {
 				delCart(id,function(){
 					$that.parent().parent().remove();
+					setAmount();
 				});
 			} else {
 				
 			}
 		});
+	});
+	//订单总额
+	$('.mui-table-view').on('change','[type="checkbox"]',function(){
+		setAmount();
+
 	});
 
 })
@@ -153,3 +159,44 @@ var delCart = function(id,callback){
 		}
 	});
 };
+
+var setAmount = function(){
+	// var $checkedBox= $(':checked');
+	var sum = 0;
+	var $arrBox = $('[type="checkbox"]');
+	// console.log($arrBox);
+	$arrBox.each(function(i,item){
+		if($(this).prop('checked') == true){//一种写法
+			
+			var id = parseInt($(this).attr('data-id'));
+			var cartItem = getItemById(id,cartData.data);
+			
+			sum += cartItem.num*cartItem.price;
+		}
+		// if(item.checked==true){              //另一种写法
+		// 	var id = parseInt($(this).attr('data-id'));
+		// 	var cartItem = getItemById(id,cartData.data);
+			
+		// 	sum += cartItem.num*cartItem.price;
+		// }
+	});
+	
+	//转为2位的浮点数
+	if(Math.floor(sum * 100)%100){         //100有余数
+		if(Math.floor(sum * 100)%10){            //10有余数
+			sum = Math.floor(sum * 100)/100;
+		}else{                                         //10无余数
+			sum = Math.floor(sum * 100)/100;
+			sum = sum.toString()+'0';
+		}
+        
+    }else{                                      //100没余数
+        sum = Math.floor(sum * 100)/100;
+        sum = sum.toString()+'.00';
+    }
+
+    $('#cartAmount').html(sum);
+
+	
+}
+
