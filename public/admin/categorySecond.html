@@ -20,12 +20,12 @@
     <!--菜单-->
     <div class="menu">
         <ul>
-        	<li class="now"><a href="userManage.html">
+        	<li><a href="userManage.html">
         		<span class="glyphicon glyphicon-user"></span>用户管理</a>
         	</li>
-        	<li>
+        	<li class="now">
                 <a href="javascript:;"><span class="glyphicon glyphicon-list"></span>分类管理</a>
-                <div class="child" -style="display: none">
+                <div class="child">
                     <a href="categoryFirst.html">一级分类</a>
                     <a href="categorySecond.html">二级分类</a>
                 </div>
@@ -44,7 +44,7 @@
     	<a href="javascript:;">
     		<span class="glyphicon glyphicon-align-justify"></span>
     	</a>
-        <a href="javascript:;">
+        <a data-logout href="javascript:;">
         	<span class="glyphicon glyphicon-log-out"></span>
         </a>
 	</nav>
@@ -52,20 +52,55 @@
 		<!-- 面包屑导航 -->
 		<ol class="breadcrumb">
 		  	<li><a href="#">管理系统</a></li>
-            <li class="active">首页</li>
+            <li class="active">分类管理</li>
+            <li class="active">二级分类</li>
 		</ol>
 		<!-- 内容区域 -->
 		<div class="ad_content">
+            <button class="btn btn-default mb_15">添加分类</button>
+            <table class="table table-bordered text-center" >
+              <thead>
+                <tr>
+                    <th class="text-center">序号</th>
+                    <th class="text-center">一级分类名称</th>
+                    <th class="text-center">二级分类名称（品牌）</th>
+                    <th class="text-center">品牌logo</th>
+                </tr>
+              </thead>
+              <tbody>
+               
+              </tbody>
+            </table>
+            <nav class="text-right">
+              <ul id="pageLimit">
+                
+              </ul>
+            </nav>
 		</div>
 	</div>
 	
 </section>
-
+<script type="text/html" id='list'>
+    <% for(var i=0;i<rows.length;i++){ 
+        var item =rows[i];
+    %>
+        <tr>
+          <th class="text-center"><%= (page-1)*size + i + 1 %></th>
+          <td><%= item.categoryName %></td>
+          <td><%= item.brandName %></td>
+          <td><img width="40" height="40" src="<%= item.brandLogo %>" /></td>
+          
+        </tr>
+    <% } %>
+    
+</script>
 <script src="assets/jquery/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <!--进度条的js-->
 <script src="assets/nprogress/nprogress.js"></script>
+<script src="assets/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+<script src="assets/artTemplate/template-native.js"></script>
 <script src="js/admin.js"></script>
-<script src="js/index.js"></script>
+<script src="js/categorySecond.js"></script>
 </body>
 </html>
