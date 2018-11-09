@@ -1,12 +1,54 @@
 $(function() {
 	
-	
+	template.helper('getJquery',function(){
+		return jQuery;
+	});
 
 	getCateSecondData(1,size,function(data){
 			totalPage= Math.ceil(data.total/data.size);
 		$('tbody').html(template('list',data));
 		initPgeinator();
 	});
+	getCateFirstData(function(data){
+		$('.dropdown-menu').html(template('dropDown',data));
+	});
+	$('.dropdown-menu').on('click','li',function(){
+		var id = $(this).attr('data-id');
+		$('[name="categoryId"]').val(id);
+	});
+
+	// 上传图片
+	 // $('[name="pic1"]').fileupload({
+	 // 	url:'/category/addSecondCategoryPic',
+  //       dataType: 'json',
+  //       done: function (e, data) {
+
+  //       	console.log(data);
+  //           // $.each(data.result.files, function (index, file) {
+  //           //     $('<p/>').text(file.name).appendTo(document.body);
+  //           // });
+  //       }
+  //   });
+  $('[name="pic1"]').on('change',function(){
+    var imgData = new FormData();
+	imgData.append("pic1", $('[name="pic1"]')[0].files[0]);   
+	// console.log($('[name="pic1"]')[0].files[0])
+	$.ajax({
+        url: "/category/addSecondCategoryPic",
+        type: "POST",
+        data: imgData,
+        contentType: false,
+        processData: false,
+        success: function (data) {
+           console.log(data);
+        }
+    });
+  	// $.ajax({
+  	// 	url:'/category/addSecondCategoryPic',
+
+   //      dataType: 'json',
+  	// });
+  })
 
 	
 });
@@ -64,4 +106,19 @@ var getCateSecondData = function(page,size,callback){
 		}
 	});
 }
+// 获取一级分类
 
+var getCateFirstData = function(callback){
+	$.ajax({
+		url:'/category/queryTopCategoryPaging',
+		type:'get',
+		data:{
+			page:1,
+			pageSize:50
+		},
+		dataType:'json',
+		success:function(data){
+			callback&&callback(data);
+		}
+	});
+};
